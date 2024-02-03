@@ -1,0 +1,67 @@
+{
+  "name": "csti-test",
+  "version": "1.0.0",
+  "main": "./dist/index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "yarn empty-build && yarn lint && tsc-watch --onSuccess \"node --inspect ./dist/index.js\"",
+    "build": "yarn empty-build && yarn lint && tsc --build",
+    "serve": "node ./dist/index.js",
+    "start": "node ./dist/index.js",
+    "empty-build": "rimraf ./dist",
+    "lint": "eslint ./src/**/*.ts --fix",
+    "format": "prettier --write \"src/**/*.{js,ts}\""
+  },
+  "lint-staged": {
+    "src/**/*.{js,ts}": [
+      "prettier --write",
+      "eslint --cache --fix"
+    ],
+    ".vscode/**/*.{js,ts}": [
+      "prettier --write"
+    ],
+    "*.json": [
+      "prettier --write"
+    ]
+  },
+  "_moduleAliases": {
+    "@": "./dist"
+  },
+  "dependencies": {
+    "axios": "0.24.0",
+    "cors": "2.8.5",
+    "dotenv": "11.0.0",
+    "express": "^4.18.2",
+    "express-validator": "6.14.0",
+    "helmet": "5.0.1",
+    "jsonwebtoken": "^9.0.2",
+    "module-alias": "2.2.2",
+    "morgan": "1.10.0",
+    "redis": "^4.6.12",
+    "redis-om": "^0.4.3",
+    "uuid": "8.3.2"
+  },
+  "devDependencies": {
+    "@types/cors": "2.8.12",
+    "@types/express": "4.17.13",
+    "@types/jsonwebtoken": "8.5.8",
+    "@types/morgan": "1.9.3",
+    "@types/node": "17.0.10",
+    "@types/uuid": "8.3.4",
+    "@typescript-eslint/eslint-plugin": "5.10.2",
+    "@typescript-eslint/parser": "5.10.2",
+    "eslint": "8.8.0",
+    "eslint-config-airbnb-base": "15.0.0",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-plugin-import": "2.25.4",
+    "lint-staged": "12.3.6",
+    "prettier": "2.6.0",
+    "rimraf": "3.0.2",
+    "tsc-watch": "4.6.0",
+    "typescript": "4.5.4"
+  },
+  "engines": {
+    "node": "16"
+  },
+  "packageManager": "yarn@1.22.17"
+}
